@@ -156,10 +156,6 @@ input:valid {
   border-color: green;
 }
 
-button:disabled {
-  background-color: grey;
-}
-
 .btn--tiny {
   height: 2rem;
   width: 2rem;
@@ -269,6 +265,7 @@ button:disabled {
   box-shadow: 0 0.7rem 3rem rgba(97, 85, 81, 0.08);
 }
 .search__field {
+  display: block;
   border: none;
   background: none;
   font-family: inherit;
@@ -470,7 +467,7 @@ button:disabled {
 
 .pagination {
   margin-top: auto;
-  padding: 0 3.5rem;
+  padding: 2rem 3.5rem;
 }
 .pagination::after {
   content: "";
@@ -616,6 +613,10 @@ button:disabled {
   flex: 0 0 auto;
   margin-top: 0.1rem;
 }
+.div-search{
+  display: flex;
+  gap: 1rem;
+}
 .recipe__quantity {
   margin-right: 0.5rem;
   flex: 0 0 auto;
@@ -730,3 +731,221 @@ button:disabled {
   grid-column: 1/-1;
   justify-self: center;
 }/*# sourceMappingURL=main.css.map */
+
+/* Container for the dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-icon{
+  display: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ec7632;
+  left: 66px;
+  min-width: 110px;
+ /* Increased for better usability */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+ /* Added slight rounding for a modern look */
+  z-index: 1;
+  transform: translateX(-50%);
+ /* Center the content horizontally */
+  text-align: center;
+}
+/* Style for dropdown links */
+.dropdown-content a {
+  color: gainsboro;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+ /* Smooth transitions */
+}
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+  background-color: #2e2e2e;
+ /* Changed to a slightly lighter shade for better contrast */
+  color: #ffffff;
+ /* Inverted text color for better readability */
+}
+/* Display dropdown content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+ /* Smooth fade-in animation */
+}
+/* Change button background on hover */
+.dropdown:hover .dropbtn {
+  background-color: #505050;
+ /* Slightly darker shade for a better hover effect */
+}
+/* Active link and hover effect for non-active links */
+a.active, a:hover {
+  background: none;
+}
+a:hover:not(.active) {
+  color: #b3b3b3;
+  transition: color 0.2s ease-in;
+}
+.search-icon{
+  display: none;
+}
+.search-toggle {
+  cursor: none;
+  display: none;
+  background-color: #f2efee;
+}
+
+@media (max-width: 600px) {
+  .btn{
+    padding: 1.5rem 6rem;
+  }
+  .search-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.upload__heading{
+  margin-top: 15px;
+}
+.message,
+.error {
+  padding: 5rem 19rem;
+}
+.search-results {
+  display: flex;
+    flex-direction: column;
+}
+.add-recipe-window{
+  width: 50rem;
+}
+.upload__btn{
+  margin-top: 10px;
+}
+.upload{
+  display: block;
+}
+  #usernameLabel{
+    display: none;
+  }
+  .header__logo{
+    display: none;
+  }
+  .search__btn{
+    display: none;
+  }
+  .search__field{
+    display: none;
+    height: 40px;
+    padding-left: 20px;
+    width: 200px;
+  }
+  .header {
+    justify-content: flex-start;
+  }
+   .recipe{
+    display: none;
+    background-color: white;
+  }
+  .recipe__details{
+    display: flex;
+    align-items: center;
+    padding: 6.5rem 3rem 3.5rem 6rem;
+  }
+  .recipe__user-generated {
+    display: none;
+  }
+  /*
+  .recipe__fig {
+    width: 260px;
+  }
+   .preview__fig{
+    border-radius: 0;
+   }
+  .nav__item{
+    display: none;
+  }
+  .preview__link:link, .preview__link:visited{
+    display: block;
+  }
+  .recipe__ingredient {
+    margin-bottom: 10px;
+  }
+  .recipe__ingredient-list {
+    display: block;
+  } */
+  
+  .nav__list{
+    display: none;
+  }
+  .heading--2{
+    text-align: justify;
+  }
+  .dropdown-icon{
+    display: block;
+    width: 50px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+  .search-icon {
+    right: 0;
+    display: block;
+    font-size: 30px;
+    color: orange;
+    margin-left: 40px;
+  }
+  .search-results{
+    display: none;
+  }
+  .close-icon{
+    right: 0;
+    display: block;
+    font-size: 30px;
+    color: orange;
+    padding-left: 15px;
+  }
+  .search{
+    padding-left: 15rem;
+    margin-left: 40px;
+  }
+  .pagination {
+    /* margin-top: 0; */
+  }
+  .card .flip .back {
+    height: 120%;
+  }
+  .nav__btn--bookmarks{
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+.search-icon {
+  right: 0;
+  display: block;
+  font-size: 30px;
+  color: orange;
+  margin-left: 144px;
+}
+.close-icon{
+  right: 0;
+  display: block;
+  font-size: 30px;
+  color: orange;
+  padding-left: 12px;
+}
+.search{
+  padding-left: 14rem;
+  margin-left: 10px;
+}
+.recipe__details{
+  padding: 7.5rem 0rem 3.5rem 3rem;
+}
+.recipe__info:not(:last-child) {
+  align-items: center;
+  margin-right: 2.5rem;
+}
+}

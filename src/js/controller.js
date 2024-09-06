@@ -5,27 +5,36 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
-import addRecipeView from './views/addRecipeView.js';
-import { nonVegetarianKeywords } from './config.js';
+import RecipeView from './views/addRecipeView.js';
 
+// Initialization and handlers
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('logout-btn');
+  const usernameLabel = document.getElementById('usernameLabel');
+
+  if (usernameLabel) {
+    const username = localStorage.getItem('username');
+    usernameLabel.textContent = username ? `Welcome, ${username}` : 'Welcome, Guest';
+  }
+  
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+      localStorage.removeItem('username');
+      window.location.href = '../register.html';
+    });
+  } else {
+    console.error('Logout button not found in the DOM');
+  }
+});
 
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-
     if (!id) return;
     recipeView.renderSpinner();
-
-    // 0) Update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
-
-    // 1) Updating bookmarks view
     bookmarksView.update(model.state.bookmarks);
-
-    // 2) Loading recipe
     await model.loadRecipe(id);
-
-    // 3) Rendering recipe
     recipeView.render(model.state.recipe);
   } catch (err) {
     recipeView.renderError();
@@ -36,18 +45,10 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
-
-    // 1) Get search query
     const query = searchView.getQuery();
     if (!query) return;
-
-    // 2) Load search results
     await model.loadSearchResults(query);
-
-    // 3) Render results
     resultsView.render(model.getSearchResultsPage());
-
-    // 4) Render initial pagination buttons
     paginationView.render(model.state.search);
   } catch (err) {
     console.log(err);
@@ -55,30 +56,19 @@ const controlSearchResults = async function () {
 };
 
 const controlPagination = function (goToPage) {
-  // 1) Render NEW results
   resultsView.render(model.getSearchResultsPage(goToPage));
-
-  // 2) Render NEW pagination buttons
   paginationView.render(model.state.search);
 };
 
 const controlServings = function (newServings) {
-  // Update the recipe servings (in state)
   model.updateServings(newServings);
-
-  // Update the recipe view
   recipeView.update(model.state.recipe);
 };
 
 const controlAddBookmark = function () {
-  // 1) Add/remove bookmark
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
-
-  // 2) Update recipe view
   recipeView.update(model.state.recipe);
-
-  // 3) Render bookmarks
   bookmarksView.render(model.state.bookmarks);
 };
 
@@ -88,32 +78,19 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    // Show loading spinner
-    addRecipeView.renderSpinner();
-
-    // Upload the new recipe data
+    RecipeView.renderSpinner();
+    RecipeView._btnUpload.disabled = true;
+    RecipeView._btnUpload.style.color = 'gray';
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
-
-    // Render recipe
     recipeView.render(model.state.recipe);
-
-    // Success message
-    addRecipeView.renderMessage();
-
-    // Render bookmark view
+    RecipeView.renderMessage();
     bookmarksView.render(model.state.bookmarks);
-
-    // Change ID in URL
     window.history.pushState(null, '', `#${model.state.recipe.id}`);
-
-    // Close form window
-    setTimeout(function () {
-      addRecipeView.toggleWindow();
-    }, MODAL_CLOSE_SEC * 1000);
+    setTimeout(() => RecipeView.toggleWindow(), MODAL_CLOSE_SEC * 1000);
   } catch (err) {
     console.error('💥', err);
-    addRecipeView.renderError(err.message);
+    RecipeView.renderError(err.message);
   }
 };
 
@@ -121,10 +98,72 @@ const controlSortByDuration = function() {
   model.sortRecipesByDuration();
   resultsView.render(model.getSearchResultsPage());
 };
+
 const controlSortByIngredients = function() {
   model.sortRecipesByIngredients();
   resultsView.render(model.getSearchResultsPage());
 };
+
+const controlVegetarianFilter = function () {
+  model.filterVegetarianRecipes();
+  resultsView.render(model.getSearchResultsPage());
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+  const searchIcon = document.querySelector('.search-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  const searchBar = document.querySelector('.search__field');
+  const dropD = document.querySelector('.dropdown');
+  const searchToggle = document.querySelector('.search-toggle');
+  const preview = document.querySelector('.preview__link');
+  const searchResults = document.querySelector('.search-results');
+  const recipeResults = document.querySelector('.recipe');
+  const toggleIcon = document.getElementById('toggle-icon');
+
+  if (searchResults) searchResults.style.display = 'none';
+
+  if (searchIcon && closeIcon && searchBar && dropD) {
+    searchIcon.addEventListener('click', function () {
+      searchBar.style.display = 'block';
+      searchIcon.style.display = 'none';
+      closeIcon.style.display = 'inline-block';
+      dropD.style.display = 'none';
+      searchResults.style.display = 'flex'; // Show search results
+      recipeResults.style.display = 'none'; // Hide recipe results
+    });
+
+    closeIcon.addEventListener('click', function () {
+      searchBar.style.display = 'none';
+      searchIcon.style.display = 'inline-block';
+      closeIcon.style.display = 'none';
+      dropD.style.display = 'block';
+      searchResults.style.display = 'none'; // Hide search results
+      recipeResults.style.display = 'block'; // Show recipe results
+    });
+  }
+
+  if (searchToggle && searchResults && recipeResults && toggleIcon) {
+    searchToggle.addEventListener('click', function () {
+
+        if (searchResults.style.display === 'none' || searchResults.style.display === '') {
+          searchResults.style.display = 'flex';
+          recipeResults.style.display = 'none';
+          toggleIcon.classList.replace('fa-arrows-left-right', 'fa-arrows-left-right-to-line');
+        } else {
+          searchResults.style.display = 'none';
+          recipeResults.style.display = 'block';
+          toggleIcon.classList.replace('fa-arrows-left-right-to-line', 'fa-arrows-left-right');
+        }
+    });
+  }
+
+  if (preview && searchResults) {
+    preview.addEventListener('click', function () {
+      recipeResults.style.display = 'block';
+    });
+  }
+}});
 
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
@@ -133,8 +172,9 @@ const init = function () {
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
-  addRecipeView.addHandlerUpload(controlAddRecipe);
+  RecipeView.addHandlerUpload(controlAddRecipe);
   resultsView.addHandlerSortByDuration(controlSortByDuration);
   resultsView.addHandlerSortByIngredients(controlSortByIngredients);
+  resultsView.addHandlerVegetarianFilter(controlVegetarianFilter);
 };
 init();
