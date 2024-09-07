@@ -126,11 +126,12 @@ document.addEventListener('DOMContentLoaded', function () {
   searchInput.style.display = 'none';
   if (searchResults) searchResults.style.display = 'none';
 
-  if (searchIcon && closeIcon && searchBar && dropD) {
+  if (searchIcon && closeIcon && searchBar && dropD && searchInput) {
     searchIcon.addEventListener('click', function () {
       searchBar.style.display = 'block';
       searchIcon.style.display = 'none';
       closeIcon.style.display = 'inline-block';
+      searchInput.style.display = 'block';
       dropD.style.display = 'none';
       searchResults.style.display = 'flex'; // Show search results
       recipeResults.style.display = 'none'; // Hide recipe results
@@ -141,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchIcon.style.display = 'inline-block';
       closeIcon.style.display = 'none';
       dropD.style.display = 'block';
+      searchInput.style.display = 'none';
       searchResults.style.display = 'none'; // Hide search results
       recipeResults.style.display = 'block'; // Show recipe results
     });
