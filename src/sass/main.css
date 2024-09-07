@@ -864,7 +864,6 @@ a:hover:not(.active) {
   .recipe__details{
     display: flex;
     align-items: center;
-    padding: 6.5rem 3rem 3.5rem 6rem;
   }
   .recipe__user-generated {
     display: none;
@@ -925,6 +924,9 @@ a:hover:not(.active) {
   .pagination {
     /* margin-top: 0; */
   }
+  .recipe__ingredient-list {
+    grid-template-columns: auto;
+  }
 
 }
 @media (max-width: 500px) {
@@ -943,9 +945,6 @@ a:hover:not(.active) {
   padding-left: 12px;
 }
 
-.recipe__details{
-  padding: 7.5rem 0rem 3.5rem 3rem;
-}
 .recipe__info:not(:last-child) {
   align-items: center;
   margin-right: 2.5rem;
