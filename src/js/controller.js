@@ -104,10 +104,10 @@ const controlSortByIngredients = function() {
   resultsView.render(model.getSearchResultsPage());
 };
 
-const controlVegetarianFilter = function () {
-  model.filterVegetarianRecipes();
-  resultsView.render(model.getSearchResultsPage());
-};
+// const controlVegetarianFilter = function () {
+//   model.filterVegetarianRecipes();
+//   resultsView.render(model.getSearchResultsPage());
+// };
 
 document.addEventListener('DOMContentLoaded', function () {
   if (window.matchMedia("(max-width: 768px)").matches) {
@@ -116,11 +116,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchBar = document.querySelector('.search__field');
   const dropD = document.querySelector('.dropdown');
   const searchToggle = document.querySelector('.search-toggle');
-  const preview = document.querySelector('.preview__link');
+  const preview = document.querySelector('.preview__link--active');
   const searchResults = document.querySelector('.search-results');
   const recipeResults = document.querySelector('.recipe');
   const toggleIcon = document.getElementById('toggle-icon');
 
+  recipeResults.style.display = 'block'; // Show recipe results
   if (searchResults) searchResults.style.display = 'none';
 
   if (searchIcon && closeIcon && searchBar && dropD) {
@@ -158,8 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (preview && searchResults) {
+  if (preview && searchResults && recipeResults) {
     preview.addEventListener('click', function () {
+      searchResults.style.display = 'none';
       recipeResults.style.display = 'block';
     });
   }
@@ -175,6 +177,6 @@ const init = function () {
   RecipeView.addHandlerUpload(controlAddRecipe);
   resultsView.addHandlerSortByDuration(controlSortByDuration);
   resultsView.addHandlerSortByIngredients(controlSortByIngredients);
-  resultsView.addHandlerVegetarianFilter(controlVegetarianFilter);
+  // resultsView.addHandlerVegetarianFilter(controlVegetarianFilter);
 };
 init();
