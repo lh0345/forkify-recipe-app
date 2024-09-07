@@ -120,8 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchResults = document.querySelector('.search-results');
   const recipeResults = document.querySelector('.recipe');
   const toggleIcon = document.getElementById('toggle-icon');
+  const searchInput = document.querySelector('.search');
 
   recipeResults.style.display = 'block'; // Show recipe results
+  searchInput.style.display = 'none';
   if (searchResults) searchResults.style.display = 'none';
 
   if (searchIcon && closeIcon && searchBar && dropD) {
@@ -161,8 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (preview && searchResults && recipeResults) {
     preview.addEventListener('click', function () {
-      searchResults.style.display = 'none';
-      recipeResults.style.display = 'block';
+      recipeResults.style.display = 'block'; // Show recipe results
+      if (searchResults) searchResults.style.display = 'none';
     });
   }
 }});

@@ -849,7 +849,7 @@ a:hover:not(.active) {
     display: none;
     height: 40px;
     width: 200px;
-    color: white;
+    color: black;
     font-weight: 700;
   }
   .header {
@@ -920,7 +920,8 @@ a:hover:not(.active) {
     padding-left: 15px;
   }
   .search{
-    background-color: #ffcc6e;
+    border-style: outset;
+    border-color: #ffa603;
   }
   .pagination {
     /* margin-top: 0; */
