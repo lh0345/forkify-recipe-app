@@ -219,7 +219,7 @@ input:valid {
 }
 .message,
 .error {
-  max-width: 40rem;
+  /* max-width: 40rem; */
   margin: 0 auto;
   padding: 5rem 4rem;
   display: flex;
@@ -801,6 +801,9 @@ a:hover:not(.active) {
 }
 
 @media (max-width: 600px) {
+  .container{
+    grid-template-columns: auto;
+  }
   .upload__column{
     gap: 0.5rem;
   }
