@@ -737,7 +737,7 @@ input:valid {
   position: relative;
   display: inline-block;
 }
-.dropdown-icon{
+#dropdown-icon{
   display: none;
 }
 
@@ -895,8 +895,9 @@ a:hover:not(.active) {
   .heading--2{
     text-align: justify;
   }
-  .dropdown-icon{
+  #dropdown-icon{
     display: block;
+    color: orange;
     width: 50px;
     padding-left: 10px;
     cursor: pointer;
