@@ -816,7 +816,7 @@ a:hover:not(.active) {
     align-items: center;
 }
 .upload__heading{
-  margin-top: 15px;
+  padding: 15px 0px 0px 0px;
 }
 .message,
 .error {
@@ -864,6 +864,8 @@ a:hover:not(.active) {
   .recipe__details{
     display: flex;
     align-items: center;
+    margin: 22px;
+    padding: 0;
   }
   .recipe__user-generated {
     display: none;
