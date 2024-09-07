@@ -853,8 +853,8 @@ a:hover:not(.active) {
     font-weight: 700;
   }
   .header {
-    justify-content: space-evenly;
-    margin: auto 0;
+    justify-content: space-between;
+    margin: auto 40px;
     background-color: white;
   }
    .recipe{
@@ -938,14 +938,6 @@ a:hover:not(.active) {
   display: block;
   font-size: 30px;
   color: orange;
-  margin-left: 144px;
-}
-.close-icon{
-  right: 0;
-  display: block;
-  font-size: 30px;
-  color: orange;
-  padding-left: 12px;
 }
 
 .recipe__info:not(:last-child) {
