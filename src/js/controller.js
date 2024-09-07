@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchBar = document.querySelector('.search__field');
   const dropD = document.querySelector('.dropdown');
   const searchToggle = document.querySelector('.search-toggle');
-  const preview = document.querySelector('.preview__link--active');
+  const preview = document.querySelector('.preview__link');
   const searchResults = document.querySelector('.search-results');
   const recipeResults = document.querySelector('.recipe');
   const toggleIcon = document.getElementById('toggle-icon');
