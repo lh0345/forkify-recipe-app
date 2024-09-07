@@ -864,8 +864,9 @@ a:hover:not(.active) {
   .recipe__details{
     display: flex;
     align-items: center;
-    margin: 22px;
+    margin: 22px 0;
     padding: 0;
+    justify-content: center;
   }
   .recipe__user-generated {
     display: none;
