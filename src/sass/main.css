@@ -854,7 +854,7 @@ a:hover:not(.active) {
   }
   .header {
     justify-content: space-evenly;
-    margin: auto 35px auto 35px;
+    margin: auto 0;
     background-color: white;
   }
    .recipe{
@@ -864,7 +864,7 @@ a:hover:not(.active) {
   .recipe__details{
     display: flex;
     align-items: center;
-    margin: 22px 0;
+    margin: 5rem 0 3rem 0;
     padding: 0;
     justify-content: center;
   }
