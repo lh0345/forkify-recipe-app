@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchBar = document.querySelector('.search__field');
   const dropD = document.querySelector('.dropdown');
   const searchToggle = document.querySelector('.search-toggle');
-  const preview = document.querySelector('.preview__link');
+  const preview = document.querySelector('.preview');
   const searchResults = document.querySelector('.search-results');
   const recipeResults = document.querySelector('.recipe');
   const toggleIcon = document.getElementById('toggle-icon');
@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (preview && searchResults && recipeResults) {
     preview.addEventListener('click', function () {
-      recipeResults.style.display = 'block'; // Show recipe results
       if (searchResults) searchResults.style.display = 'none';
+      recipeResults.style.display = 'block'; // Show recipe results
     });
   }
 }});
