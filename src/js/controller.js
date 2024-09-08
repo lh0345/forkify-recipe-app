@@ -8,24 +8,24 @@ import bookmarksView from './views/bookmarksView.js';
 import RecipeView from './views/addRecipeView.js';
 
 // Initialization and handlers
-document.addEventListener('DOMContentLoaded', () => {
-  const logoutBtn = document.getElementById('logout-btn');
-  const usernameLabel = document.getElementById('usernameLabel');
+// document.addEventListener('DOMContentLoaded', () => {
+//   const logoutBtn = document.getElementById('logout-btn');
+//   const usernameLabel = document.getElementById('usernameLabel');
 
-  if (usernameLabel) {
-    const username = localStorage.getItem('username');
-    usernameLabel.textContent = username ? `Welcome, ${username}` : 'Welcome, Guest';
-  }
+//   if (usernameLabel) {
+//     const username = localStorage.getItem('username');
+//     usernameLabel.textContent = username ? `Welcome, ${username}` : 'Welcome, Guest';
+//   }
   
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', function() {
-      localStorage.removeItem('username');
-      window.location.href = '../register.html';
-    });
-  } else {
-    console.error('Logout button not found in the DOM');
-  }
-});
+//   if (logoutBtn) {
+//     logoutBtn.addEventListener('click', function() {
+//       localStorage.removeItem('username');
+//       window.location.href = '../register.html';
+//     });
+//   } else {
+//     console.error('Logout button not found in the DOM');
+//   }
+// });
 
 // const controlRecipes = async function () {
 //   try {
