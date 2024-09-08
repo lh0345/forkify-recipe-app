@@ -802,7 +802,7 @@ a:hover:not(.active) {
 
 @media (max-width: 600px) {
   .recipe__directions-text{
-    font-size: 100%;
+    font-size: 1.4rem;
   }
   .container{
     grid-template-columns: auto;
@@ -897,10 +897,7 @@ a:hover:not(.active) {
   .nav{
     display: none;
   }
-  .heading--2{
-    text-align: center;
-    font-size: 135%;
-  }
+
   #dropdown-icon{
     display: block;
     color: orange;
