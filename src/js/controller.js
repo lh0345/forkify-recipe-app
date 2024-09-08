@@ -115,15 +115,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeIcon = document.querySelector('.close-icon');
     const searchBar = document.querySelector('.search__field');
     const dropD = document.querySelector('.dropdown');
-    const searchToggle = document.querySelector('.search-toggle');
-    const previews = document.querySelectorAll('.preview__link'); // Changed to select all preview links
+    const previewLinks = document.querySelectorAll('.preview__link');
     const searchResults = document.querySelector('.search-results');
     const recipeResults = document.querySelector('.recipe');
-    const toggleIcon = document.getElementById('toggle-icon');
     const searchInput = document.querySelector('.search');
 
     // Initial state setup
-    recipeResults.style.display = 'none'; // Hide recipe at the start
+    recipeResults.style.display = 'block'; // Hide recipe at the start
     searchInput.style.display = 'none';
     if (searchResults) searchResults.style.display = 'none';
 
@@ -148,34 +146,20 @@ document.addEventListener('DOMContentLoaded', function () {
         recipeResults.style.display = 'block'; // Show recipe results
       });
     }
-
-    if (searchToggle && searchResults && recipeResults && toggleIcon) {
-      searchToggle.addEventListener('click', function () {
-        if (searchResults.style.display === 'none' || searchResults.style.display === '') {
-          searchResults.style.display = 'flex';
-          recipeResults.style.display = 'none';
-          toggleIcon.classList.replace('fa-arrows-left-right', 'fa-arrows-left-right-to-line');
-        } else {
+    // Add click event to each preview link
+    if (previewLinks && searchResults && recipeResults) {
+      previewLinks.forEach(function (previewLink) {
+        previewLink.addEventListener('click', function (event) {
+          event.preventDefault(); // Prevent default link behavior
+          
+          // Hide search results and show recipe
           searchResults.style.display = 'none';
-          recipeResults.style.display = 'block';
-          toggleIcon.classList.replace('fa-arrows-left-right-to-line', 'fa-arrows-left-right');
-        }
-      });
-    }
-
-    // Handling clicks on preview links
-    if (previews && searchResults && recipeResults) {
-      previews.forEach(preview => {
-        preview.addEventListener('click', function (e) {
-          e.preventDefault(); // Prevent default anchor behavior
-          searchResults.style.display = 'none'; // Hide search results
-          recipeResults.style.display = 'block'; // Show recipe
+          recipeResults.style.display = 'block'; // Show recipe results
         });
       });
     }
   }
 });
-
 
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
