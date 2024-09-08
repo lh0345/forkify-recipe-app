@@ -923,6 +923,7 @@ a:hover:not(.active) {
   .search{
     border-style: outset;
     border-color: #ffa603;
+    width: 85%;
   }
   .pagination {
     /* margin-top: 0; */
