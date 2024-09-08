@@ -1,4 +1,4 @@
-const iconsUrl = '..../img/icons.svg';
+const iconsUrl = '../../img/icons.svg';
 
 export default class View{
     _data;
