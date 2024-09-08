@@ -50,9 +50,10 @@ const controlRecipes = async function () {
     // Hide search results and show the recipe container
     const searchResults = document.querySelector('.search-results');
     const recipeResults = document.querySelector('.recipe');
+  if (window.matchMedia("(max-width: 768px)").matches) {
     if (searchResults) searchResults.style.display = 'none';
     if (recipeResults) recipeResults.style.display = 'block';
-
+  }
     recipeView.renderSpinner();
     resultsView.update(model.getSearchResultsPage());
     bookmarksView.update(model.state.bookmarks);

@@ -801,6 +801,9 @@ a:hover:not(.active) {
 }
 
 @media (max-width: 600px) {
+  .recipe__directions-text{
+    font-size: 100%;
+  }
   .container{
     grid-template-columns: auto;
   }
@@ -895,7 +898,8 @@ a:hover:not(.active) {
     display: none;
   }
   .heading--2{
-    text-align: justify;
+    text-align: center;
+    font-size: 135%;
   }
   #dropdown-icon{
     display: block;
@@ -909,10 +913,6 @@ a:hover:not(.active) {
     display: block;
     font-size: 30px;
     color: orange;
-  }
-  .search-results{
-    display: none;
-    background-color:#f9f5f3;
   }
   .close-icon{
     right: 0;
