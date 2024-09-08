@@ -801,9 +801,6 @@ a:hover:not(.active) {
 }
 
 @media (max-width: 600px) {
-  .recipe__directions-text{
-    font-size: 100%;
-  }
   .container{
     grid-template-columns: auto;
   }
@@ -898,8 +895,7 @@ a:hover:not(.active) {
     display: none;
   }
   .heading--2{
-    text-align: center;
-    font-size: 135%;
+    text-align: justify;
   }
   #dropdown-icon{
     display: block;
