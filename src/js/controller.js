@@ -199,25 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const bookmarkBtn = document.querySelector('.nav__btn--bookmarks');
-  const dropdownContent = document.querySelector('.dropdown-content');
-
-  bookmarkBtn.addEventListener('click', function () {
-    // Toggle dropdown visibility
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-    }
-  });
-
-  // Optionally, close the dropdown if clicked outside
-  window.addEventListener('click', function (event) {
-    if (!event.target.matches('.nav__btn--bookmarks') && !event.target.matches('.dropdown-content')) {
-      dropdownContent.style.display = 'none';
-    }
-  });
-});
-
 
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
