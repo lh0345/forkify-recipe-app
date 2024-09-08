@@ -151,9 +151,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('.search');
 
     // Initial state setup
-    recipeResults.style.display = 'block'; // Hide recipe at the start
+    recipeResults.style.display = 'block'; // Show recipe at the start
     searchInput.style.display = 'none';
     if (searchResults) searchResults.style.display = 'none';
+
+    function closeSearchBar() {
+      searchBar.style.display = 'none';
+      searchIcon.style.display = 'inline-block';
+      closeIcon.style.display = 'none';
+      dropD.style.display = 'block';
+      searchInput.style.display = 'none';
+      searchResults.style.display = 'none'; // Hide search results
+      recipeResults.style.display = 'block'; // Show recipe results
+    }
 
     if (searchIcon && closeIcon && searchBar && dropD && searchInput) {
       searchIcon.addEventListener('click', function () {
@@ -166,16 +176,9 @@ document.addEventListener('DOMContentLoaded', function () {
         recipeResults.style.display = 'none'; // Hide recipe results
       });
 
-      closeIcon.addEventListener('click', function () {
-        searchBar.style.display = 'none';
-        searchIcon.style.display = 'inline-block';
-        closeIcon.style.display = 'none';
-        dropD.style.display = 'block';
-        searchInput.style.display = 'none';
-        searchResults.style.display = 'none'; // Hide search results
-        recipeResults.style.display = 'block'; // Show recipe results
-      });
+      closeIcon.addEventListener('click', closeSearchBar);
     }
+
     // Add click event to each preview link
     if (previewLinks && searchResults && recipeResults) {
       previewLinks.forEach(function (previewLink) {
@@ -188,6 +191,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     }
+
+    // Listen for hash changes and trigger the close icon behavior
+    window.addEventListener('hashchange', function () {
+      closeSearchBar();
+    });
   }
 });
 
