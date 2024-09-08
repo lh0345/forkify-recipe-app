@@ -27,13 +27,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// const controlRecipes = async function () {
+//   try {
+//     const id = window.location.hash.slice(1);
+//     if (!id) return;
+//     recipeView.renderSpinner();
+//     resultsView.update(model.getSearchResultsPage());
+//     bookmarksView.update(model.state.bookmarks);
+//     await model.loadRecipe(id);
+//     recipeView.render(model.state.recipe);
+//   } catch (err) {
+//     recipeView.renderError();
+//     console.error(err);
+//   }
+// };
+
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
+
+    // Hide search results and show the recipe container
+    const searchResults = document.querySelector('.search-results');
+    const recipeResults = document.querySelector('.recipe');
+    if (searchResults) searchResults.style.display = 'none';
+    if (recipeResults) recipeResults.style.display = 'block';
+
     recipeView.renderSpinner();
     resultsView.update(model.getSearchResultsPage());
     bookmarksView.update(model.state.bookmarks);
+
     await model.loadRecipe(id);
     recipeView.render(model.state.recipe);
   } catch (err) {
@@ -41,6 +64,12 @@ const controlRecipes = async function () {
     console.error(err);
   }
 };
+
+// Add hashchange event listener to trigger the recipe display on hash change
+window.addEventListener('hashchange', controlRecipes);
+
+// Optional: Call controlRecipes on page load to handle the case where a recipe is directly loaded with a hash in the URL
+window.addEventListener('load', controlRecipes);
 
 const controlSearchResults = async function () {
   try {
