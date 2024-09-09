@@ -145,24 +145,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeIcon = document.querySelector('.close-icon');
     const searchBar = document.querySelector('.search__field');
     const dropD = document.querySelector('.dropdown');
-    const previewLinks = document.querySelectorAll('.preview__link');
+    const dropdownIcon = document.querySelector('#dropdown-icon');
+    const closeDropdownIcon = document.querySelector('#close-dropdown-icon');
     const searchResults = document.querySelector('.search-results');
     const recipeResults = document.querySelector('.recipe');
+    const dropdownContent = document.querySelector('.dropdown-content');
     const searchInput = document.querySelector('.search');
-
+    
     // Initial state setup
     recipeResults.style.display = 'block'; // Show recipe at the start
     searchInput.style.display = 'none';
-    if (searchResults) searchResults.style.display = 'none';
-
+    searchResults.style.display = 'none';
+    dropdownContent.style.display = 'none';
+    closeDropdownIcon.style.display = 'none'; // Hide close icon initially
+    
     function closeSearchBar() {
       searchBar.style.display = 'none';
       searchIcon.style.display = 'inline-block';
       closeIcon.style.display = 'none';
-      dropD.style.display = 'block';
       searchInput.style.display = 'none';
       searchResults.style.display = 'none'; // Hide search results
       recipeResults.style.display = 'block'; // Show recipe results
+    }
+
+    function closeDropdown() {
+      dropdownContent.style.display = 'none';
+      dropdownIcon.style.display = 'inline-block';
+      closeDropdownIcon.style.display = 'none';
     }
 
     if (searchIcon && closeIcon && searchBar && dropD && searchInput) {
@@ -171,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         searchIcon.style.display = 'none';
         closeIcon.style.display = 'inline-block';
         searchInput.style.display = 'block';
-        dropD.style.display = 'none';
         searchResults.style.display = 'flex'; // Show search results
         recipeResults.style.display = 'none'; // Hide recipe results
       });
@@ -179,22 +187,18 @@ document.addEventListener('DOMContentLoaded', function () {
       closeIcon.addEventListener('click', closeSearchBar);
     }
 
-    // Add click event to each preview link
-    if (previewLinks && searchResults && recipeResults) {
-      previewLinks.forEach(function (previewLink) {
-        previewLink.addEventListener('click', function (event) {
-          event.preventDefault(); // Prevent default link behavior
-          
-          // Hide search results and show recipe
-          searchResults.style.display = 'none';
-          recipeResults.style.display = 'block'; // Show recipe results
-        });
-      });
-    }
+    // Toggle dropdown icon and content
+    dropdownIcon.addEventListener('click', function () {
+      dropdownContent.style.display = 'block';
+      dropdownIcon.style.display = 'none';
+      closeDropdownIcon.style.display = 'inline-block';
+    });
 
-    // Listen for hash changes and trigger the close icon behavior
+    closeDropdownIcon.addEventListener('click', closeDropdown);
+
     window.addEventListener('hashchange', function () {
       closeSearchBar();
+      closeDropdown();
     });
   }
 });

@@ -737,7 +737,11 @@ input:valid {
   position: relative;
   display: inline-block;
 }
-#dropdown-icon{
+#dropdown-icon {
+  display: none;
+}
+
+#close-dropdown-icon {
   display: none;
 }
 
@@ -747,13 +751,10 @@ input:valid {
   background-color: #ec7632;
   left: 66px;
   min-width: 110px;
- /* Increased for better usability */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
- /* Added slight rounding for a modern look */
   z-index: 1;
   transform: translateX(-50%);
- /* Center the content horizontally */
   text-align: center;
 }
 /* Style for dropdown links */
@@ -898,13 +899,21 @@ a:hover:not(.active) {
     display: none;
   }
 
-  #dropdown-icon{
+  #dropdown-icon {
     display: block;
     color: orange;
     width: 50px;
     font-size: 35px;
     cursor: pointer;
-}
+  }
+
+  #close-dropdown-icon {
+    display: none;
+    color: orange;
+    width: 50px;
+    font-size: 35px;
+    cursor: pointer;
+  }
   .search-icon {
     right: 0;
     display: block;
