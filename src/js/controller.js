@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchIcon.style.display = 'none';
         closeIcon.style.display = 'inline-block';
         searchInput.style.display = 'block';
+        dropdownIcon.style.display = 'none';
         searchResults.style.display = 'flex'; // Show search results
         recipeResults.style.display = 'none'; // Hide recipe results
       });
