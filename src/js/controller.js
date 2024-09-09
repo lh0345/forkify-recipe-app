@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchResults.style.display = 'none'; // Hide search results
       recipeResults.style.display = 'block'; // Show recipe results
       dropdownIcon.style.display = 'inline-block';
+      closeDropdownIcon.style.display = 'none'; // Hide close icon initially
     }
 
     function closeDropdown() {
