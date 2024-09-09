@@ -749,7 +749,7 @@ input:valid {
   display: none;
   position: absolute;
   background-color: #ec7632;
-  left: 66px;
+  left: 55px;
   min-width: 110px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
