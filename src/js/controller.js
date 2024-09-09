@@ -149,11 +149,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchResults = document.querySelector('.search-results');
     const recipeResults = document.querySelector('.recipe');
     const searchInput = document.querySelector('.search');
+    const bookmarksContainer = document.querySelector('.bookmarks');
+    const bookmarksBtn = document.querySelector('.nav__btn--bookmarks');
 
     // Initial state setup
     recipeResults.style.display = 'block'; // Show recipe at the start
     searchInput.style.display = 'none';
     if (searchResults) searchResults.style.display = 'none';
+    bookmarksContainer.style.display = 'none'; // Hide bookmarks initially
 
     function closeSearchBar() {
       searchBar.style.display = 'none';
@@ -163,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchInput.style.display = 'none';
       searchResults.style.display = 'none'; // Hide search results
       recipeResults.style.display = 'block'; // Show recipe results
+      bookmarksContainer.style.display = 'none'; // Hide bookmarks
     }
 
     if (searchIcon && closeIcon && searchBar && dropD && searchInput) {
@@ -174,9 +178,19 @@ document.addEventListener('DOMContentLoaded', function () {
         dropD.style.display = 'none';
         searchResults.style.display = 'flex'; // Show search results
         recipeResults.style.display = 'none'; // Hide recipe results
+        bookmarksContainer.style.display = 'none'; // Hide bookmarks
       });
 
       closeIcon.addEventListener('click', closeSearchBar);
+    }
+
+    // Handle bookmarks dropdown click event
+    if (bookmarksBtn && bookmarksContainer) {
+      bookmarksBtn.addEventListener('click', function () {
+        recipeResults.style.display = 'none'; // Hide recipe results
+        searchResults.style.display = 'none'; // Hide search results
+        bookmarksContainer.style.display = 'block'; // Show bookmarks
+      });
     }
 
     // Add click event to each preview link
@@ -184,10 +198,11 @@ document.addEventListener('DOMContentLoaded', function () {
       previewLinks.forEach(function (previewLink) {
         previewLink.addEventListener('click', function (event) {
           event.preventDefault(); // Prevent default link behavior
-          
+
           // Hide search results and show recipe
           searchResults.style.display = 'none';
           recipeResults.style.display = 'block'; // Show recipe results
+          bookmarksContainer.style.display = 'none'; // Hide bookmarks
         });
       });
     }
@@ -198,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
 
 
 const init = function () {
