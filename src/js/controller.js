@@ -138,33 +138,6 @@ const controlSortByIngredients = function() {
 //   model.filterVegetarianRecipes();
 //   resultsView.render(model.getSearchResultsPage());
 // };
-document.addEventListener('DOMContentLoaded', function () {
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    const bookmarksBtn = document.querySelector('.nav__btn--bookmarks');
-    const bookmarksDropdown = document.querySelector('.dropdown-content');
-    const bookmarksList = document.querySelector('.bookmarks__list');
-    const messageElement = document.querySelector('.message');
-
-    // Hide bookmarks by default
-    bookmarksDropdown.style.display = 'none';
-
-    // Handle bookmarks dropdown click event
-    if (bookmarksBtn && bookmarksDropdown) {
-      bookmarksBtn.addEventListener('click', function () {
-        // Toggle the bookmarks dropdown visibility
-        const isVisible = bookmarksDropdown.style.display === 'block';
-        bookmarksDropdown.style.display = isVisible ? 'none' : 'block';
-
-        // Show the bookmarks list or the "No bookmarks" message
-        if (bookmarksList.children.length === 0) {
-          messageElement.style.display = 'block'; // Show 'No bookmarks' message
-        } else {
-          messageElement.style.display = 'none'; // Hide message if bookmarks exist
-        }
-      });
-    }
-  }
-});
 
 document.addEventListener('DOMContentLoaded', function () {
   if (window.matchMedia("(max-width: 768px)").matches) {
