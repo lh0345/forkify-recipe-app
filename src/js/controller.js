@@ -151,6 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('.search');
     const bookmarksContainer = document.querySelector('.bookmarks');
     const bookmarksBtn = document.querySelector('.nav__btn--bookmarks');
+    const bookmarksList = document.querySelector('.bookmarks__list');
+    const messageElement = document.querySelector('.message');
 
     // Initial state setup
     recipeResults.style.display = 'block'; // Show recipe at the start
@@ -190,6 +192,13 @@ document.addEventListener('DOMContentLoaded', function () {
         recipeResults.style.display = 'none'; // Hide recipe results
         searchResults.style.display = 'none'; // Hide search results
         bookmarksContainer.style.display = 'block'; // Show bookmarks
+
+        // Check if there are bookmarks to show
+        if (bookmarksList.children.length === 0) {
+          messageElement.style.display = 'block'; // Show 'No bookmarks' message
+        } else {
+          messageElement.style.display = 'none'; // Hide the message if bookmarks exist
+        }
       });
     }
 
@@ -214,6 +223,66 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   if (window.matchMedia("(max-width: 768px)").matches) {
+//     const searchIcon = document.querySelector('.search-icon');
+//     const closeIcon = document.querySelector('.close-icon');
+//     const searchBar = document.querySelector('.search__field');
+//     const dropD = document.querySelector('.dropdown');
+//     const previewLinks = document.querySelectorAll('.preview__link');
+//     const searchResults = document.querySelector('.search-results');
+//     const recipeResults = document.querySelector('.recipe');
+//     const searchInput = document.querySelector('.search');
+
+//     // Initial state setup
+//     recipeResults.style.display = 'block'; // Show recipe at the start
+//     searchInput.style.display = 'none';
+//     if (searchResults) searchResults.style.display = 'none';
+
+//     function closeSearchBar() {
+//       searchBar.style.display = 'none';
+//       searchIcon.style.display = 'inline-block';
+//       closeIcon.style.display = 'none';
+//       dropD.style.display = 'block';
+//       searchInput.style.display = 'none';
+//       searchResults.style.display = 'none'; // Hide search results
+//       recipeResults.style.display = 'block'; // Show recipe results
+//     }
+
+//     if (searchIcon && closeIcon && searchBar && dropD && searchInput) {
+//       searchIcon.addEventListener('click', function () {
+//         searchBar.style.display = 'block';
+//         searchIcon.style.display = 'none';
+//         closeIcon.style.display = 'inline-block';
+//         searchInput.style.display = 'block';
+//         dropD.style.display = 'none';
+//         searchResults.style.display = 'flex'; // Show search results
+//         recipeResults.style.display = 'none'; // Hide recipe results
+//       });
+
+//       closeIcon.addEventListener('click', closeSearchBar);
+//     }
+
+//     // Add click event to each preview link
+//     if (previewLinks && searchResults && recipeResults) {
+//       previewLinks.forEach(function (previewLink) {
+//         previewLink.addEventListener('click', function (event) {
+//           event.preventDefault(); // Prevent default link behavior
+          
+//           // Hide search results and show recipe
+//           searchResults.style.display = 'none';
+//           recipeResults.style.display = 'block'; // Show recipe results
+//         });
+//       });
+//     }
+
+//     // Listen for hash changes and trigger the close icon behavior
+//     window.addEventListener('hashchange', function () {
+//       closeSearchBar();
+//     });
+//   }
+// });
 
 
 const init = function () {
