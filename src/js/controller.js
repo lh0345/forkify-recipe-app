@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchInput.style.display = 'none';
       searchResults.style.display = 'none'; // Hide search results
       recipeResults.style.display = 'block'; // Show recipe results
+      dropdownIcon.style.display = 'inline-block';
     }
 
     function closeDropdown() {
