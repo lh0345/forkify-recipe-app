@@ -28,7 +28,21 @@
             <i class="fas fa-solid fa-bars" id="dropdown-icon"></i> 
               <div class="dropdown-content">
                   <a class="nav__btn nav__btn--add-recipe1">Add recipe</a>
-                  <a  class="nav__btn nav__btn--bookmarks">Bookmarks</a>
+                  <a class="nav__btn nav__btn--bookmarks">Bookmarks</a>
+                  <div class="bookmarks">
+                    <ul class="bookmarks__list">
+                      <!-- Bookmarked recipes will be inserted here -->
+                    </ul>
+                    <div class="message" style="display: none;">
+                      <div>
+                        <svg>
+                          <use href="./img/icons.svg#icon-smile"></use>
+                        </svg>
+                      </div>
+                      <p>No bookmarks yet. Find a nice recipe and bookmark it :)</p>
+                    </div>
+                  </div>
+                </div>
                 </div>
           </div>
           <h3 style="padding-left: 20px;" id="usernameLabel"></h3>
