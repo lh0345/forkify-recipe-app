@@ -155,7 +155,9 @@ input:invalid {
 input:valid {
   border-color: green;
 }
-
+::placeholder {
+  color: black;
+}
 .btn--tiny {
   height: 3rem;
   width: 3rem;
