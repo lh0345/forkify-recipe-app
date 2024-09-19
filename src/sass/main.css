@@ -157,8 +157,8 @@ input:valid {
 }
 
 .btn--tiny {
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
   border: none;
   background: none;
   cursor: pointer;
@@ -557,8 +557,8 @@ input:valid {
   margin-right: 4.5rem;
 }
 .recipe__info-icon {
-  height: 2.35rem;
-  width: 2.35rem;
+  height: 3.35rem;
+  width: 3.35rem;
   fill: #f38e82;
   margin-right: 1.15rem;
 }
