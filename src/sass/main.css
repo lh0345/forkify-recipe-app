@@ -236,7 +236,7 @@ input:valid {
 .message p,
 .error p {
   margin-left: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   line-height: 1.5;
   font-weight: 600;
 }
@@ -826,7 +826,7 @@ a:hover:not(.active) {
 }
 .message,
 .error {
-  padding: 5rem 19rem;
+  padding: 10rem 9rem;
 }
 .search-results {
   display: flex;
